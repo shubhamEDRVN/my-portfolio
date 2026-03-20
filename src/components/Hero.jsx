@@ -123,7 +123,7 @@ const Hero = () => {
         {/* Left Text Block */}
         <div ref={leftTextRef} className="flex flex-col items-start gap-4 z-20 w-[35%]">
            <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter text-theme-text1 leading-tight">
-             Welcome to<br/>Shubham<br/>Mehta<br/>Portfolio
+             Welcome to<br/>Shubham<br/>Mehta's<br/>Portfolio
            </h1>
            <div className="w-16 h-[2px] bg-theme-accent" />
            <p className="font-mono text-xs md:text-sm text-theme-text2 uppercase tracking-widest leading-relaxed">

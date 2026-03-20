@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useLenis } from './hooks/useLenis';
 import Cursor from './components/Cursor';
@@ -6,10 +6,24 @@ import Navbar from './components/Navbar';
 import SplineBackground from './components/SplineBackground';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
-import Projects from './components/Projects';
+import SolarSystemProjects from './components/SolarSystemProjects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+
+// Simple Error Boundary component
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error) { return { hasError: true }; }
+  componentDidCatch(error, errorInfo) { console.error("Boundary Caught:", error, errorInfo); }
+  render() {
+    if (this.state.hasError) return this.props.fallback || null;
+    return this.props.children;
+  }
+}
 
 function App() {
   useLenis();
@@ -34,8 +48,9 @@ function App() {
 
   return (
     <>
-      {/* Fixed 3D Spline Keyboard Background - OUTSIDE scroll wrapper */}
-      <SplineBackground />
+      <ErrorBoundary fallback={<div className="fixed inset-0 bg-black z-0" />}>
+        <SplineBackground />
+      </ErrorBoundary>
       
       <div className="bg-transparent min-h-screen text-theme-text1 overflow-x-hidden w-full relative pointer-events-none">
         <div 
@@ -53,7 +68,9 @@ function App() {
         <main className="relative z-10 pointer-events-none">
           <div className="pointer-events-auto"><Hero /></div>
           <div className="pointer-events-none"><Skills /></div>
-          <div className="pointer-events-auto"><Projects /></div>
+          <ErrorBoundary fallback={<div className="h-[600px] flex items-center justify-center text-white/20 uppercase tracking-widest">Solar System Offline</div>}>
+            <div className="pointer-events-auto opacity-100 relative z-20"><SolarSystemProjects /></div>
+          </ErrorBoundary>
           <div className="pointer-events-auto"><Experience /></div>
           <div className="pointer-events-auto"><Contact /></div>
         </main>
