@@ -11,6 +11,7 @@ const Contact = () => {
   const starsRef = useRef([]);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const requestRef = useRef();
+  const isIntersectingRef = useRef(true);
 
   useMouseMagnetic(btnRef, 0.2);
 
@@ -49,6 +50,12 @@ const Contact = () => {
     window.addEventListener('resize', handleResize);
     handleResize();
 
+    // PERFORMANCE FIX: Pause rendering when off-screen
+    const observer = new IntersectionObserver(([entry]) => {
+      isIntersectingRef.current = entry.isIntersecting;
+    }, { threshold: 0.05 });
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
     const onMouseMove = (e) => {
       const rect = canvas.getBoundingClientRect();
       mouseRef.current.x = e.clientX - rect.left;
@@ -57,6 +64,10 @@ const Contact = () => {
     canvas.addEventListener('mousemove', onMouseMove);
 
     const anim = () => {
+      if (!isIntersectingRef.current) {
+        requestRef.current = requestAnimationFrame(anim);
+        return; // Skip heavy canvas rendering
+      }
       const w = canvas.width / (window.devicePixelRatio || 1);
       const h = canvas.height / (window.devicePixelRatio || 1);
       const mouse = mouseRef.current;
@@ -100,6 +111,8 @@ const Contact = () => {
       window.removeEventListener('resize', handleResize);
       canvas.removeEventListener('mousemove', onMouseMove);
       cancelAnimationFrame(requestRef.current);
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      observer.disconnect();
     };
   }, []);
 

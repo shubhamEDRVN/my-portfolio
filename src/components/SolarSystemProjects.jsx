@@ -3,7 +3,9 @@ import {
   Server, Zap, ShieldCheck, Activity, Cpu, Bot, Network, Settings,
   Palette, Ticket, Camera, MessageSquare, Tv, Search, Star, Database,
   Moon, Sun, X, ExternalLink, Github, Sparkles, Send,
-  Cloud, Code, Layers, Globe, Lock, Smartphone, Terminal, Wifi, Eye
+  Cloud, Code, Layers, Globe, Lock, Smartphone, Terminal, Wifi, Eye,
+  Mic, BarChart, DollarSign, Brain, CreditCard, Users, Home, MapPin,
+  Calendar, BookOpen, Clock, Mail, MousePointer, Grid3x3, Play, Building
 } from './LucideIcons.jsx';
 
 const GEMINI_API_KEY = "AIzaSyAXUFhTW6r_NvPQOWY3y01uROCxel4hYWY";
@@ -15,125 +17,153 @@ const IconMap = {
   "tv": Tv, "search": Search, "star": Star, "database": Database,
   "cloud": Cloud, "code": Code, "layers": Layers, "globe": Globe,
   "lock": Lock, "smartphone": Smartphone, "terminal": Terminal, "wifi": Wifi, "eye": Eye,
+  "mic": Mic, "bar-chart": BarChart, "dollar-sign": DollarSign, "brain": Brain,
+  "credit-card": CreditCard, "users": Users, "home": Home, "map-pin": MapPin,
+  "calendar": Calendar, "book-open": BookOpen, "clock": Clock, "mail": Mail,
+  "mouse-pointer": MousePointer, "grid-3x3": Grid3x3, "play": Play, "building": Building,
 };
 
 const PROJECTS = [
   {
-    id: "proj-1", name: "AWS Serverless Core", category: "Cloud Architecture",
-    role: "Technical Head", year: "2025",
-    desc: "Designed and implemented a scalable serverless architecture using AWS Lambda, API Gateway, and DynamoDB to support high-throughput student community applications, reducing operational costs by 40%.",
-    color: "#FF9900", radius: 22, orbitR: 120, speed: 0.0012,
-    tech: ["AWS Lambda", "DynamoDB", "Node.js", "CloudFormation"],
-    stats: [{ v: "10K+", k: "Invocations/day" }, { v: "120ms", k: "Avg Latency" }, { v: "99.99%", k: "Uptime" }],
-    moons: [{ name: "Auth Gateway", color: "#FFB84D" }, { name: "Data Pipeline", color: "#FFE0B2" }, { name: "CDN Layer", color: "#FFC107" }],
-    imgs: ["server", "zap", "shield-check", "activity"],
+    id: "seva-ai", name: "SevaAI", category: "AI · Voice Assistant",
+    role: "Lead Developer", year: "2025", subtitle: "Voice-based AI for Municipal Corporation — bridging citizens & government.",
+    desc: "A real-time intelligent voice assistant built for municipal corporations to solve citizen issues. Uses MERN stack + Gemini AI to provide smart, instant responses, bridging the gap between people and government services.",
+    color: "#00E5FF", radius: 26, orbitR: 190, speed: 0.0010,
+    tech: ["MongoDB", "Express", "React", "Node.js", "Gemini AI", "WebSockets"],
+    stats: [{ v: "Real-Time", k: "Voice AI" }, { v: "Gemini", k: "Integration" }, { v: "MERN", k: "Stack" }],
+    moons: [{ name: "Voice Engine", color: "#80DEEA" }, { name: "Gemini Core", color: "#4DD0E1" }, { name: "Gov Gateway", color: "#00BCD4" }],
+    imgs: ["mic", "zap", "bot", "globe"],
+    liveUrl: "#", githubUrl: "https://github.com/shubhamEDRVN/SevaAi", hasRing: false
+  },
+  {
+    id: "profitpaybook", name: "ProfitPaybook Pro", category: "Freelance · SaaS",
+    role: "Full Stack Developer", year: "2025", subtitle: "Business estimation & learning platform for a real client.",
+    desc: "A freelance project built for a client to manage business estimations, track profits, and provide a structured learning platform. MERN stack with Gemini AI integration for smart business insights.",
+    color: "#FFEB3B", radius: 22, orbitR: 280, speed: 0.0008,
+    tech: ["MongoDB", "Express", "React", "Node.js", "Gemini AI"],
+    stats: [{ v: "Live", k: "Client Project" }, { v: "AI", k: "Powered" }, { v: "SaaS", k: "Platform" }],
+    moons: [{ name: "Estimator", color: "#FFF176" }, { name: "Learning Hub", color: "#FFD54F" }],
+    imgs: ["bar-chart", "dollar-sign", "brain", "layers"],
+    liveUrl: "#", githubUrl: "https://github.com/shubhamEDRVN/ClientProject", hasRing: false
+  },
+  {
+    id: "bookmyshow", name: "BookMyShow Clone", category: "Full Stack · MERN",
+    role: "Full Stack Developer", year: "2024", subtitle: "Real-time event & ticket booking platform.",
+    desc: "A full MERN-stack clone of BookMyShow with real-time seat selection, payment simulation, event management, and a production-grade booking flow with MongoDB backend.",
+    color: "#BF5AF2", radius: 28, orbitR: 370, speed: 0.0006,
+    tech: ["MongoDB", "Express", "React", "Node.js"],
+    stats: [{ v: "10K+", k: "Simulated Users" }, { v: "Real-Time", k: "Seat Select" }, { v: "Full", k: "Booking Flow" }],
+    moons: [{ name: "Seat Engine", color: "#E040FB" }, { name: "Payment Gate", color: "#EA80FC" }, { name: "Event DB", color: "#CE93D8" }],
+    imgs: ["ticket", "database", "credit-card", "users"],
+    liveUrl: "#", githubUrl: "https://github.com/shubhamEDRVN/BookMyShowClone", hasRing: true
+  },
+  {
+    id: "propdeals", name: "PropDeals", category: "Java · Web App",
+    role: "Backend Developer", year: "2024", subtitle: "Buy & sell property platform built in Java.",
+    desc: "A property buying and selling platform built using Java, JSP, and Java Beans with a structured MVC architecture. Features property listings, search, and user management.",
+    color: "#FF7043", radius: 20, orbitR: 460, speed: 0.00045,
+    tech: ["Java", "JSP", "Java Beans", "MySQL", "HTML/CSS"],
+    stats: [{ v: "MVC", k: "Architecture" }, { v: "Java EE", k: "Stack" }, { v: "Full CRUD", k: "Listings" }],
+    moons: [{ name: "Listing Engine", color: "#FF8A65" }, { name: "Search Module", color: "#FFAB91" }],
+    imgs: ["home", "search", "database", "map-pin"],
+    liveUrl: "#", githubUrl: "https://github.com/shubhamEDRVN/Portfolio", hasRing: false
+  },
+  {
+    id: "backup-planner", name: "Online Backup Planner", category: "Java · Education",
+    role: "Full Stack Developer", year: "2024", subtitle: "Student platform for catching up on missed lectures.",
+    desc: "A student backup platform for missed lectures built using Java, Struts framework, Hibernate ORM, with HTML/CSS frontend. Allows students to schedule catch-up sessions and access missed content.",
+    color: "#66BB6A", radius: 18, orbitR: 550, speed: 0.00035,
+    tech: ["Java", "Struts", "Hibernate", "HTML", "CSS", "MySQL"],
+    stats: [{ v: "Struts", k: "MVC" }, { v: "Hibernate", k: "ORM" }, { v: "Student", k: "Focused" }],
+    moons: [{ name: "Schedule Engine", color: "#81C784" }, { name: "Content Store", color: "#A5D6A7" }],
+    imgs: ["calendar", "book-open", "users", "clock"],
+    liveUrl: "#", githubUrl: "https://github.com/shubhamEDRVN/OnlinebackupPlanner", hasRing: false
+  },
+  {
+    id: "jarvis", name: "JARVIS", category: "Python · AI",
+    role: "Solo Developer", year: "2024", subtitle: "Personal voice-controlled AI assistant.",
+    desc: "A JARVIS-style personal assistant built with Python libraries. Operates entirely via voice control — performs tasks, answers questions, writes notes, sends emails, and even shuts down the PC.",
+    color: "#29B6F6", radius: 22, orbitR: 640, speed: 0.00028,
+    tech: ["Python", "SpeechRecognition", "pyttsx3", "smtplib", "OpenAI"],
+    stats: [{ v: "Voice", k: "Controlled" }, { v: "50+", k: "Commands" }, { v: "Full", k: "OS Control" }],
+    moons: [{ name: "Voice Engine", color: "#4FC3F7" }, { name: "Mail Module", color: "#81D4FA" }, { name: "Task Runner", color: "#B3E5FC" }],
+    imgs: ["mic", "terminal", "mail", "cpu"],
+    liveUrl: "#", githubUrl: "https://github.com/shubhamEDRVN/Friday", hasRing: false
+  },
+  {
+    id: "chess3d", name: "Chess 3D", category: "3D · Game Dev",
+    role: "Solo Developer", year: "2024", subtitle: "Fully functional chess game with 3D frontend.",
+    desc: "A fully functional chess application with a stunning 3D frontend and a backend powered by EJS. Features complete chess rules, piece animations, and multiplayer support.",
+    color: "#EC407A", radius: 24, orbitR: 740, speed: 0.00022,
+    tech: ["Three.js", "JavaScript", "EJS", "Node.js", "Express"],
+    stats: [{ v: "3D", k: "Frontend" }, { v: "Full Rules", k: "Engine" }, { v: "EJS", k: "Backend" }],
+    moons: [{ name: "3D Renderer", color: "#F48FB1" }, { name: "Rules Engine", color: "#F06292" }, { name: "Move AI", color: "#AD1457" }],
+    imgs: ["layers", "cpu", "grid-3x3", "play"],
+    liveUrl: "#", githubUrl: "https://github.com/shubhamEDRVN/chess-frontend", hasRing: true
+  },
+  {
+    id: "hotel-mgmt", name: "Hotel Booking Manager", category: "Java · Desktop",
+    role: "Solo Developer", year: "2023", subtitle: "Desktop software for hotel booking management.",
+    desc: "A Java-based desktop application for managing hotel bookings, room allocation, guest management, and billing. Built for practical use with a clean Swing/AWT interface.",
+    color: "#FFA726", radius: 16, orbitR: 850, speed: 0.00018,
+    tech: ["Java", "Swing", "AWT", "MySQL", "JDBC"],
+    stats: [{ v: "Desktop", k: "App" }, { v: "Java", k: "Powered" }, { v: "Full", k: "Booking Flow" }],
+    moons: [{ name: "Room Manager", color: "#FFB74D" }, { name: "Billing Module", color: "#FFD54F" }],
+    imgs: ["building", "calendar", "users", "dollar-sign"],
+    liveUrl: "#", githubUrl: "https://github.com/shubhamEDRVN/HotelBoookingSoftware", hasRing: false
+  },
+  {
+    id: "eye-mouse", name: "Eye-Controlled Mouse", category: "Python · Computer Vision",
+    role: "Solo Developer", year: "2024", subtitle: "Control your mouse with just your right eye.",
+    desc: "A Python-based accessibility tool that uses computer vision to track eye movements via webcam and translate them into mouse cursor movements — hands-free interaction powered by OpenCV.",
+    color: "#AB47BC", radius: 18, orbitR: 940, speed: 0.00015,
+    tech: ["Python", "OpenCV", "MediaPipe", "PyAutoGUI"],
+    stats: [{ v: "30fps", k: "Tracking" }, { v: "Eye-Only", k: "Control" }, { v: "Webcam", k: "Powered" }],
+    moons: [{ name: "Vision Core", color: "#CE93D8" }, { name: "Input Bridge", color: "#BA68C8" }],
+    imgs: ["eye", "camera", "mouse-pointer", "zap"],
     liveUrl: "#", githubUrl: "#", hasRing: false
   },
-  {
-    id: "proj-2", name: "Nexus AI Agent", category: "Machine Learning",
-    role: "Lead Developer", year: "2025",
-    desc: "Built an intelligent agentic system leveraging LLMs to autonomously handle complex data processing pipelines and generate actionable insights for community management.",
-    color: "#00E676", radius: 32, orbitR: 195, speed: 0.0008,
-    tech: ["Python", "TensorFlow", "LangChain", "FastAPI"],
-    stats: [{ v: "3.2M", k: "Tokens/mo" }, { v: "50+", k: "Workflows" }, { v: "0.8s", k: "Response time" }],
-    moons: [{ name: "NLP Engine", color: "#69F0AE" }, { name: "Vector DB", color: "#B9F6CA" }, { name: "Decision Core", color: "#00C853" }, { name: "RAG Pipeline", color: "#A5D6A7" }],
-    imgs: ["cpu", "bot", "network", "settings"],
-    liveUrl: "#", githubUrl: "#", hasRing: true
-  },
-  {
-    id: "proj-3", name: "Student Hub UI", category: "Frontend Experience",
-    role: "Creative Technologist", year: "2024",
-    desc: "A rich, interactive frontend experience built for student communities, featuring real-time chat, event ticketing, and seamless animations.",
-    color: "#2979FF", radius: 20, orbitR: 260, speed: 0.0006,
-    tech: ["React", "Three.js", "Tailwind CSS", "Framer Motion"],
-    stats: [{ v: "5K+", k: "Active Users" }, { v: "60fps", k: "Performance" }, { v: "<1s", k: "Load Time" }],
-    moons: [{ name: "Selfie Studio", color: "#82B1FF" }, { name: "Chat Engine", color: "#448AFF" }],
-    imgs: ["palette", "ticket", "camera", "message-square"],
-    liveUrl: "#", githubUrl: "#", hasRing: false
-  },
-  {
-    id: "proj-4", name: "Anime Discovery Engine", category: "Full Stack",
-    role: "Solo Developer", year: "2024",
-    desc: "A passion project utilizing graph databases and collaborative filtering to recommend Japanese anime based on nuanced user preferences and viewing history.",
-    color: "#FF1744", radius: 26, orbitR: 320, speed: 0.00045,
-    tech: ["Next.js", "Neo4j", "GraphQL", "Redis"],
-    stats: [{ v: "15K+", k: "Titles Indexed" }, { v: "92%", k: "Match Rate" }, { v: "2K", k: "Daily Queries" }],
-    moons: [{ name: "Scraper Bot", color: "#FF8A80" }, { name: "Rec Engine", color: "#D50000" }, { name: "User Profiles", color: "#FF5252" }],
-    imgs: ["tv", "search", "star", "database"],
-    liveUrl: "#", githubUrl: "#", hasRing: false
-  },
-  {
-    id: "proj-5", name: "DevOps Pipeline", category: "Infrastructure",
-    role: "DevOps Engineer", year: "2025",
-    desc: "Architected a fully automated CI/CD pipeline with Docker, Kubernetes, and Terraform, enabling zero-downtime deployments and infrastructure-as-code practices across multiple environments.",
-    color: "#7C4DFF", radius: 24, orbitR: 385, speed: 0.00035,
-    tech: ["Docker", "Kubernetes", "Terraform", "GitHub Actions"],
-    stats: [{ v: "200+", k: "Deployments/mo" }, { v: "0", k: "Downtime hrs" }, { v: "4min", k: "Build Time" }],
-    moons: [{ name: "Container Registry", color: "#B388FF" }, { name: "Monitoring", color: "#D1C4E9" }, { name: "Alerting", color: "#9575CD" }, { name: "Secrets Mgr", color: "#7E57C2" }],
-    imgs: ["terminal", "cloud", "layers", "settings"],
-    liveUrl: "#", githubUrl: "#", hasRing: true
-  },
-  {
-    id: "proj-6", name: "SecureAuth Platform", category: "Cybersecurity",
-    role: "Security Architect", year: "2024",
-    desc: "Designed an enterprise-grade authentication platform with OAuth 2.0, biometric verification, and zero-trust architecture serving 50K+ users with SOC2 compliance.",
-    color: "#00BCD4", radius: 18, orbitR: 440, speed: 0.00028,
-    tech: ["OAuth 2.0", "JWT", "PostgreSQL", "Go"],
-    stats: [{ v: "50K+", k: "Users" }, { v: "0", k: "Breaches" }, { v: "SOC2", k: "Compliant" }],
-    moons: [{ name: "Token Service", color: "#80DEEA" }],
-    imgs: ["lock", "shield-check", "eye", "database"],
-    liveUrl: "#", githubUrl: "#", hasRing: false
-  },
-  {
-    id: "proj-7", name: "MobileFirst App", category: "Mobile Development",
-    role: "Mobile Lead", year: "2024",
-    desc: "Cross-platform mobile application built with React Native featuring offline-first architecture, push notifications, and native performance for campus event management.",
-    color: "#FF6D00", radius: 16, orbitR: 490, speed: 0.00022,
-    tech: ["React Native", "TypeScript", "Firebase", "Expo"],
-    stats: [{ v: "10K+", k: "Downloads" }, { v: "4.8\u2605", k: "Rating" }, { v: "98%", k: "Crash Free" }],
-    moons: [{ name: "Push Service", color: "#FFAB40" }, { name: "Offline Sync", color: "#FFD180" }, { name: "Analytics", color: "#FFB74D" }],
-    imgs: ["smartphone", "wifi", "globe", "zap"],
-    liveUrl: "#", githubUrl: "#", hasRing: false
-  },
-  {
-    id: "proj-8", name: "CodeCollab IDE", category: "Developer Tools",
-    role: "Core Contributor", year: "2025",
-    desc: "Real-time collaborative code editor with WebSocket-powered sync, integrated terminal, AI code completion, and support for 30+ programming languages.",
-    color: "#E040FB", radius: 28, orbitR: 550, speed: 0.00018,
-    tech: ["WebSockets", "Monaco Editor", "Rust", "WebRTC"],
-    stats: [{ v: "30+", k: "Languages" }, { v: "5ms", k: "Sync Latency" }, { v: "1K+", k: "Concurrent" }],
-    moons: [{ name: "LSP Bridge", color: "#EA80FC" }, { name: "AI Complete", color: "#CE93D8" }, { name: "Terminal", color: "#F8BBD0" }, { name: "Git Sync", color: "#E1BEE7" }, { name: "Debugger", color: "#BA68C8" }],
-    imgs: ["code", "terminal", "layers", "cpu"],
-    liveUrl: "#", githubUrl: "#", hasRing: true
-  }
 ];
 
-const COMETS = [
-  { name: "Freelance: UI Audit", color: "#ffe0b2", speed: 0.002, semiMajor: 580, semiMinor: 170, angle: Math.PI / 4 },
-  { name: "Contract: API Fixes", color: "#b2dfdb", speed: 0.003, semiMajor: 680, semiMinor: 220, angle: -Math.PI / 6 },
-  { name: "Open Source PR", color: "#c5cae9", speed: 0.0015, semiMajor: 500, semiMinor: 300, angle: Math.PI / 3 },
-  { name: "Hackathon Win", color: "#ffcdd2", speed: 0.0025, semiMajor: 750, semiMinor: 180, angle: -Math.PI / 4 },
+const METEORS = [
+  {
+    name: "AWS Student Website", subtitle: "Club management platform with team features",
+    color: "#FF9900", glowColor: "#FFB74D", speed: 0.0018,
+    semiMajor: 980, semiMinor: 240, angle: Math.PI / 4,
+    githubUrl: "https://github.com/shubhamEDRVN/AWS-Website", tech: ["React", "Node.js", "AWS"],
+  },
+  {
+    name: "SCD 2025", subtitle: "Student Community Day official website",
+    color: "#00E5FF", glowColor: "#80DEEA", speed: 0.0025,
+    semiMajor: 1050, semiMinor: 280, angle: -Math.PI / 5,
+    githubUrl: "#", tech: ["React", "Tailwind", "Vite"],
+  },
 ];
 
 const SKILLS_LIST = [
-  "React", "Python", "Docker", "AWS", "TypeScript", "Node.js", "Go", "Rust",
-  "GraphQL", "Redis", "MongoDB", "PostgreSQL", "Kubernetes", "Terraform",
-  "TensorFlow", "Next.js", "Tailwind", "Firebase", "WebRTC", "FastAPI",
-  "Git", "CI/CD", "Linux", "Figma", "Three.js", "WebGL", "GSAP", "Vite",
-  "OAuth", "JWT", "REST", "gRPC", "Prisma", "Supabase", "Vercel", "Netlify",
+  "React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind",
+  "Node.js", "Express", "Java", "Python", "Spring Boot", "Struts", "Hibernate",
+  "MongoDB", "MySQL", "SQL",
+  "Gemini AI", "OpenAI", "OpenCV", "MediaPipe",
+  "Git", "GitHub", "Postman", "VS Code",
+  "EJS", "JSP", "Three.js", "GSAP", "Framer Motion", "Bootstrap",
 ];
 
 const SKILL_COLORS = {
-  "React": "#61DAFB", "Python": "#3776AB", "Docker": "#2496ED", "AWS": "#FF9900",
-  "TypeScript": "#3178C6", "Node.js": "#339933", "Go": "#00ADD8", "Rust": "#DEA584",
-  "GraphQL": "#E535AB", "Redis": "#DC382D", "MongoDB": "#47A248", "PostgreSQL": "#4169E1",
-  "Kubernetes": "#326CE5", "Terraform": "#7B42BC", "TensorFlow": "#FF6F00", "Next.js": "#FFFFFF",
-  "Tailwind": "#06B6D4", "Firebase": "#FFCA28", "WebRTC": "#333333", "FastAPI": "#009688",
+  "React": "#61DAFB", "Next.js": "#FFFFFF", "TypeScript": "#3178C6", "JavaScript": "#F7DF1E",
+  "HTML": "#E34F26", "CSS": "#1572B6", "Tailwind": "#06B6D4",
+  "Node.js": "#339933", "Express": "#FFFFFF", "Java": "#ED8B00", "Python": "#3776AB",
+  "Spring Boot": "#6DB33F", "Struts": "#FF5722", "Hibernate": "#59666C",
+  "MongoDB": "#47A248", "MySQL": "#4479A1", "SQL": "#CC2927",
+  "Gemini AI": "#8E75FF", "OpenAI": "#00A67E", "OpenCV": "#5C3EE8", "MediaPipe": "#0097A7",
+  "Git": "#F05032", "GitHub": "#FFFFFF", "Postman": "#FF6C37", "VS Code": "#007ACC",
+  "EJS": "#B4CA65", "JSP": "#007396", "Three.js": "#000000",
+  "GSAP": "#88CE02", "Framer Motion": "#0055FF", "Bootstrap": "#7952B3",
 };
 
-const ASTEROID_COUNT = 140;
-const ASTEROID_BELT_INNER = 285;
-const ASTEROID_BELT_OUTER = 315;
+const ASTEROID_COUNT = 300;
+const ASTEROID_BELT_INNER = 330;
+const ASTEROID_BELT_OUTER = 410;
 
 /* =========================================================================
    HOVER INFO CARD (Canvas)
@@ -304,6 +334,8 @@ const SolarSystemProjects = () => {
   const ripplesRef = useRef([]);
   const planetStatesRef = useRef({});
   const isMobileRef = useRef(false);
+  const canvasRectRef = useRef(null);
+  const isIntersectingRef = useRef(true); // PERFORMANCE FIX
 
   // Smoothed hover state refs
   const hoverAlphaRef = useRef(0);
@@ -364,46 +396,112 @@ const SolarSystemProjects = () => {
       planetStatesRef.current[p.id] = { pulse: 1, glowAlpha: 0 };
     });
 
+    // BUG FIX #1: Canvas rect tracking
+    const updateRect = () => {
+      canvasRectRef.current = canvas.getBoundingClientRect();
+    };
+
     const handleResize = () => {
       const w = window.innerWidth, h = window.innerHeight;
       isMobileRef.current = w <= 768;
       const dpr = window.devicePixelRatio || 1;
       canvas.width = w * dpr;
       canvas.height = h * dpr;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       initStars(w, h);
       initAsteroids();
+      updateRect();
     };
     window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', updateRect);
     handleResize();
 
+    // PERFORMANCE FIX: Only render when visible
+    const observer = new IntersectionObserver(([entry]) => {
+      isIntersectingRef.current = entry.isIntersecting;
+    }, { threshold: 0.05 });
+    if (canvasRef.current) observer.observe(canvasRef.current);
+
+    // BUG FIX #1: Use canvas-local coordinates
+    const getCanvasLocalCoords = (e) => {
+      const rect = canvasRectRef.current || canvas.getBoundingClientRect();
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    };
+
     const onMouseMove = (e) => {
-      mouseRef.current.x = e.clientX;
-      mouseRef.current.y = e.clientY;
-      mouseRef.current.rx = ((e.clientX / window.innerWidth) - 0.5) * 36;
-      mouseRef.current.ry = ((e.clientY / window.innerHeight) - 0.5) * 36;
+      const { x, y } = getCanvasLocalCoords(e);
+      mouseRef.current.x = x;
+      mouseRef.current.y = y;
+      mouseRef.current.rx = ((x / window.innerWidth) - 0.5) * 36;
+      mouseRef.current.ry = ((y / window.innerHeight) - 0.5) * 36;
     };
 
     let lastTap = 0;
     const onTouchStart = (e) => {
-      mouseRef.current.x = e.touches[0].clientX;
-      mouseRef.current.y = e.touches[0].clientY;
+      const { x, y } = getCanvasLocalCoords(e.touches[0]);
+      mouseRef.current.x = x;
+      mouseRef.current.y = y;
       const now = Date.now(), d = now - lastTap;
       if (d < 300 && d > 0) handleCanvasClick();
       lastTap = now;
     };
 
+    // BUG FIX #3: Recompute closest planet at click time
     const handleCanvasClick = () => {
-      if (hoveredPlanetRef.current) {
-        const proj = hoveredPlanetRef.current.data;
-        planetStatesRef.current[proj.id].pulse = 1.5;
-        setSelectedProject(proj);
+      const mouse = mouseRef.current;
+      const isMobile = isMobileRef.current;
+      const width = window.innerWidth, height = window.innerHeight;
+      const fitScale = (height * 0.45) / 680;
+      const scale = isMobile ? Math.min(0.55, fitScale) : Math.min(1.2, fitScale);
+      const cx = width / 2, cy = height / 2;
+      const parallaxScale = isMobile ? 1 : 2;
+      const sysX = Math.round(cx - mouse.rx * parallaxScale);
+      const sysY = Math.round(cy - mouse.ry * parallaxScale);
+      const time = timeRef.current;
+
+      let clicked = null;
+      let minDist = Infinity;
+      PROJECTS.forEach((p, i) => {
+        const orbitRadius = p.orbitR * scale;
+        const angle = time * p.speed + (i * Math.PI * 2 / PROJECTS.length);
+        const px = sysX + Math.cos(angle) * orbitRadius;
+        const py = sysY + Math.sin(angle) * orbitRadius;
+        const dx = mouse.x - px, dy = mouse.y - py;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const scaledRadius = p.radius * scale * 2.4;
+        const hitR = scaledRadius + (isMobile ? 22 : 16);
+        if (dist < hitR && dist < minDist) {
+          minDist = dist;
+          clicked = p;
+        }
+      });
+
+      if (clicked) {
+        planetStatesRef.current[clicked.id].pulse = 1.5;
+        setSelectedProject(clicked);
         setIsPanelOpen(true);
         setAiMode('idle');
       } else {
-        setIsPanelOpen(false);
-        setSelectedProject(null);
-        ripplesRef.current.push({ x: mouseRef.current.x, y: mouseRef.current.y, radius: 0, alpha: 1 });
+        // Check meteors
+        let clickedMeteor = null;
+        METEORS.forEach((m, i) => {
+          const cTime = time * m.speed + (i * 100);
+          const a = m.semiMajor * scale, b = m.semiMinor * scale;
+          const ex = Math.cos(cTime) * a, ey = Math.sin(cTime) * b;
+          const mx = sysX + ex * Math.cos(m.angle) - ey * Math.sin(m.angle);
+          const my = sysY + ex * Math.sin(m.angle) + ey * Math.cos(m.angle);
+          const dx = mouse.x - mx, dy = mouse.y - my;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 25) clickedMeteor = m;
+        });
+
+        if (clickedMeteor && clickedMeteor.githubUrl && clickedMeteor.githubUrl !== '#') {
+          window.open(clickedMeteor.githubUrl, '_blank');
+        } else {
+          setIsPanelOpen(false);
+          setSelectedProject(null);
+          ripplesRef.current.push({ x: mouse.x, y: mouse.y, radius: 0, alpha: 1 });
+        }
       }
     };
 
@@ -413,12 +511,17 @@ const SolarSystemProjects = () => {
 
     /* ==================== ANIMATION LOOP ==================== */
     const animate = () => {
+      if (!isIntersectingRef.current) {
+        requestRef.current = requestAnimationFrame(animate);
+        return; // Skip heavy canvas drawing when off-screen
+      }
       const width = window.innerWidth, height = window.innerHeight;
       const cx = width / 2, cy = height / 2;
       const isMobile = isMobileRef.current;
       const mouse = mouseRef.current;
       const currentTheme = themeRef.current;
-      const scale = isMobile ? 0.5 : 1;
+      const fitScale = (height * 0.45) / 680;
+      const scale = isMobile ? Math.min(0.55, fitScale) : Math.min(1.2, fitScale);
 
       const colors = currentTheme === 'dark'
         ? { bg: '#030305', star: 'rgba(255,255,255,', orbit: 'rgba(255,255,255,0.04)', orbitHover: 'rgba(255,255,255,0.14)' }
@@ -523,13 +626,15 @@ const SolarSystemProjects = () => {
 
       hoveredAsteroidRef.current = currentAsteroidHover;
 
-      // ─── COMETS ───
-      COMETS.forEach((c, i) => {
+      // ─── COMETS / METEORS — BUG FIX #4: Blinking glow + labels ───
+      METEORS.forEach((c, i) => {
         const cTime = time * c.speed + (i * 100);
         const a = c.semiMajor * scale, b = c.semiMinor * scale;
         const ex = Math.cos(cTime) * a, ey = Math.sin(cTime) * b;
         const cxp = Math.round(sysX + ex * Math.cos(c.angle) - ey * Math.sin(c.angle));
         const cyp = Math.round(sysY + ex * Math.sin(c.angle) + ey * Math.cos(c.angle));
+
+        // Tail
         ctx.beginPath();
         for (let j = 0; j < 25; j++) {
           const pt = cTime - (j * 0.02);
@@ -542,26 +647,57 @@ const SolarSystemProjects = () => {
         ctx.lineWidth = 2;
         ctx.globalAlpha = 0.5;
         ctx.stroke();
-        ctx.globalAlpha = 1;
+
+        // Blink effect
+        const blink = (Math.sin(time * 0.06 + i * 1.7) + 1) / 2;
+        const coreAlpha = 0.5 + blink * 0.5;
+        const glowRadius = 12 + blink * 14;
+
+        // Glow aura
+        const glowGrad = ctx.createRadialGradient(cxp, cyp, 0, cxp, cyp, glowRadius);
+        glowGrad.addColorStop(0, c.glowColor + 'CC');
+        glowGrad.addColorStop(0.5, c.color + '66');
+        glowGrad.addColorStop(1, 'transparent');
+        ctx.globalAlpha = coreAlpha * 0.5;
+        ctx.fillStyle = glowGrad;
+        ctx.beginPath(); ctx.arc(cxp, cyp, glowRadius, 0, Math.PI * 2); ctx.fill();
+
+        // Core dot
+        ctx.globalAlpha = coreAlpha;
         ctx.fillStyle = '#fff';
-        ctx.beginPath(); ctx.arc(cxp, cyp, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cxp, cyp, 3.5, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = c.color;
-        ctx.beginPath(); ctx.arc(cxp, cyp, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cxp, cyp, 5, 0, Math.PI * 2); ctx.fill();
+
+        // Label
+        ctx.globalAlpha = 0.7 + blink * 0.3;
+        ctx.fillStyle = c.color;
+        ctx.font = '600 11px "Space Grotesk", sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(c.name, cxp + 12, cyp + 4);
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        ctx.font = '400 9px "Inter", sans-serif';
+        ctx.fillText(c.subtitle, cxp + 12, cyp + 16);
+
+        ctx.globalAlpha = 1;
       });
 
       // ─── PLANETS ───
       let currentlyHovered = null;
       PROJECTS.forEach((p, i) => {
         const orbitRadius = p.orbitR * scale;
-        const angle = time * p.speed + (i * Math.PI * 2 / PROJECTS.length);
+        const direction = i % 2 === 0 ? 1 : -1; // Alternating orbit direction
+        const angle = time * p.speed * direction + (i * Math.PI * 2 / PROJECTS.length);
         const px = Math.round(sysX + Math.cos(angle) * orbitRadius);
         const py = Math.round(sysY + Math.sin(angle) * orbitRadius);
         const state = planetStatesRef.current[p.id] || { pulse: 1, glowAlpha: 0 };
 
-        // Squared distance hover check
+        // BUG FIX #2: Scaled hit radius
         const dx = mouse.x - px, dy = mouse.y - py;
         const distSq = dx * dx + dy * dy;
-        const hitR = p.radius + (isMobile ? 25 : 25);
+        const scaledRadius = p.radius * scale * 2.4;
+        const hitPadding = isMobile ? 22 : 16;
+        const hitR = scaledRadius + hitPadding;
         const isHovered = distSq < (hitR * hitR) && !isPanelOpenRef.current;
         if (isHovered) currentlyHovered = { data: p, x: px, y: py };
 
@@ -629,8 +765,9 @@ const SolarSystemProjects = () => {
         // Moons
         if (p.moons) {
           p.moons.forEach((m, mi) => {
-            const mOrbit = currentRadius + 14 + (mi * 10);
-            const mAngle = (time * p.speed * 3.5) + (mi * (Math.PI * 2 / p.moons.length));
+            const mOrbit = currentRadius + 18 + (mi * 14);
+            const mDirection = mi % 2 === 0 ? 1 : -1;
+            const mAngle = (time * p.speed * 3.5 * mDirection) + (mi * (Math.PI * 2 / p.moons.length));
             const mx = Math.round(px + Math.cos(mAngle) * mOrbit);
             const my = Math.round(py + Math.sin(mAngle) * mOrbit);
             ctx.beginPath();
@@ -644,15 +781,29 @@ const SolarSystemProjects = () => {
             ctx.arc(mx, my, 2.5, 0, Math.PI * 2);
             ctx.fillStyle = m.color;
             ctx.fill();
+
+            // Moon label (desktop only)
+            if (!isMobile) {
+              ctx.shadowColor = m.color;
+              ctx.shadowBlur = 6;
+              ctx.fillStyle = m.color;
+              ctx.font = '500 8px "Inter", sans-serif';
+              ctx.textAlign = 'left';
+              ctx.fillText(m.name, mx + 6, my + 3);
+              ctx.shadowBlur = 0;
+            }
           });
         }
 
-        // Subtle label
+        // Glowing planet label
         if (!isHovered && !isMobile) {
-          ctx.fillStyle = currentTheme === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)';
-          ctx.font = '500 9px "Inter", sans-serif';
+          ctx.shadowColor = p.color;
+          ctx.shadowBlur = 12;
+          ctx.fillStyle = p.color;
+          ctx.font = '700 11px "Space Grotesk", sans-serif';
           ctx.textAlign = 'center';
-          ctx.fillText(p.name, px, py + currentRadius + 14);
+          ctx.fillText(p.name, px, py + currentRadius + 18);
+          ctx.shadowBlur = 0;
         }
       });
 
@@ -738,10 +889,13 @@ const SolarSystemProjects = () => {
     requestRef.current = requestAnimationFrame(animate);
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', updateRect);
       canvas.removeEventListener('mousemove', onMouseMove);
       canvas.removeEventListener('touchstart', onTouchStart);
       canvas.removeEventListener('click', handleCanvasClick);
       cancelAnimationFrame(requestRef.current);
+      if (canvasRef.current) observer.unobserve(canvasRef.current);
+      observer.disconnect();
     };
   }, []);
 
@@ -783,6 +937,12 @@ const SolarSystemProjects = () => {
         .blink { animation:blink 1s step-end infinite; } @keyframes blink { 50% { opacity:0; } }
       `}</style>
 
+      {/* ─── PROJECTS HEADING ─── */}
+      <div className="absolute top-12 left-10 md:left-16 z-[100] flex flex-col items-start pointer-events-none">
+        <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight font-display opacity-90" style={{ textShadow: '0 0 40px rgba(191,90,242,0.3), 0 4px 20px rgba(0,0,0,0.5)' }}>PROJECTS</h2>
+        <p className="text-white/30 text-sm tracking-[0.3em] uppercase mt-2 font-display">(click a planet to explore)</p>
+      </div>
+
       <div className={`absolute inset-0 z-[9999] flex flex-col items-center justify-center bg-[var(--bg-color)] transition-opacity duration-700 ${loading ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <h1 className="text-[var(--text-primary)] text-xl font-medium tracking-widest uppercase font-display mb-6 animate-pulse">Calibrating System</h1>
         <div className="w-60 h-0.5 bg-[var(--border-color)] overflow-hidden">
@@ -790,7 +950,7 @@ const SolarSystemProjects = () => {
         </div>
       </div>
 
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-crosshair opacity-0 animate-[fadeIn_1s_ease-out_forwards_1s]" style={{ willChange: 'transform' }} />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-crosshair opacity-0 animate-[fadeIn_1s_ease-out_forwards_1s]" style={{ willChange: 'transform', touchAction: 'none' }} />
 
       <aside className={`fixed z-[200] bg-[var(--panel-bg)] backdrop-blur-xl border-l border-[var(--border-color)] shadow-[var(--panel-shadow)] flex flex-col overflow-y-auto bottom-[-100vh] left-0 w-full h-[80vh] rounded-t-3xl p-6 md:p-12 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:bottom-auto md:top-0 md:left-auto md:-right-[540px] md:w-[480px] md:h-screen md:rounded-none ${isPanelOpen ? '!bottom-0 md:!right-0' : ''}`}>
         <div className="w-12 h-1 bg-[var(--border-color)] rounded-full mx-auto mb-6 md:hidden" />

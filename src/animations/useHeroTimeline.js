@@ -30,7 +30,7 @@ export const useHeroTimeline = (
           trigger: containerRef.current,
           start: "top top",
           end: "+=300%",
-          scrub: 1.5,
+          scrub: 0.5, // Gentle interpolation for canvas flipbook
           pin: true,
           pinSpacing: true,
           anticipatePin: 1,
@@ -47,6 +47,8 @@ export const useHeroTimeline = (
         const context = canvasRef.current.getContext('2d');
         const img = imagesRef.current[Math.round(frameObj.frame)];
         if (img) {
+          context.imageSmoothingEnabled = true;
+          context.imageSmoothingQuality = 'high';
           context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
           const hRatio = canvasRef.current.width / img.width;
           const vRatio = canvasRef.current.height / img.height;
@@ -65,7 +67,6 @@ export const useHeroTimeline = (
       // 0 - 100% of scroll: Animate frame sequence uniformly
       tl.to(frameObj, {
         frame: totalFrames - 1,
-        snap: "frame",
         ease: "none",
         onUpdate: render,
         duration: 10

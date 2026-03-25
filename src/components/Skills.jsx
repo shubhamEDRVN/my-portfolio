@@ -12,6 +12,7 @@ const Skills = () => {
   const starsRef = useRef([]);
   const mouseRef = useRef({ tx: -1000, ty: -1000, cx: -1000, cy: -1000 });
   const requestRef = useRef();
+  const isIntersectingRef = useRef(true);
 
   const initStars = useCallback((w, h) => {
     const stars = [];
@@ -52,6 +53,12 @@ const Skills = () => {
     window.addEventListener('resize', handleResize);
     handleResize();
 
+    // PERFORMANCE FIX: Pause rendering when off-screen
+    const observer = new IntersectionObserver(([entry]) => {
+      isIntersectingRef.current = entry.isIntersecting;
+    }, { threshold: 0.05 });
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
     const onMouseMove = (e) => {
       mouseRef.current.tx = e.clientX;
       mouseRef.current.ty = e.clientY;
@@ -60,6 +67,10 @@ const Skills = () => {
     window.addEventListener('mousemove', onMouseMove);
 
     const animate = () => {
+      if (!isIntersectingRef.current) {
+        requestRef.current = requestAnimationFrame(animate);
+        return; // Skip heavy canvas rendering
+      }
       const w = canvas.width / (window.devicePixelRatio || 1);
       const h = canvas.height / (window.devicePixelRatio || 1);
       const mouse = mouseRef.current;
@@ -129,6 +140,8 @@ const Skills = () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', onMouseMove);
       cancelAnimationFrame(requestRef.current);
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      observer.disconnect();
     };
   }, []);
 
@@ -152,7 +165,7 @@ const Skills = () => {
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
-        end: "+=150%",
+        end: "+=100%", // FIXED: Reduced from 150% for faster scroll-through
         pin: true,
         pinSpacing: true,
       });
@@ -189,6 +202,8 @@ const Skills = () => {
           (hint: hover the stars)
         </p>
       </div>
+      {/* Bottom fade for seamless transition into Projects */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #030305)' }} />
     </section>
   );
 };

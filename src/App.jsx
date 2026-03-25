@@ -28,22 +28,75 @@ class ErrorBoundary extends React.Component {
 function App() {
   useLenis();
   const loaderRef = useRef(null);
-  const [loading, setLoading] = useState(true);
+  const progressRef = useRef(null);
+  const percentRef = useRef(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(loaderRef.current, {
-        opacity: 0,
-        duration: 1.5,
-        delay: 0.5,
-        ease: 'power3.inOut',
-        onComplete: () => {
-          if (loaderRef.current) loaderRef.current.style.display = 'none';
-          setLoading(false);
+    // Global loading screen — waits for fonts, images, and heavy components
+    let progress = 0;
+    const targetProgress = 100;
+    const startTime = Date.now();
+    const MIN_DURATION = 2500;  // minimum 2.5s loader for component init
+
+    const ticker = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const naturalProgress = Math.min((elapsed / MIN_DURATION) * 100, 95);
+      progress = Math.max(progress, naturalProgress);
+
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${progress / 100})`;
+      }
+      if (percentRef.current) {
+        percentRef.current.textContent = `${Math.round(progress)}%`;
+      }
+
+      if (progress >= 95 && document.readyState === 'complete') {
+        progress = targetProgress;
+        if (progressRef.current) {
+          progressRef.current.style.transform = `scaleX(1)`;
         }
-      });
-    });
-    return () => ctx.revert();
+        if (percentRef.current) {
+          percentRef.current.textContent = '100%';
+        }
+        clearInterval(ticker);
+
+        // Fade out after bar hits 100%
+        setTimeout(() => {
+          const ctx = gsap.context(() => {
+            gsap.to(loaderRef.current, {
+              opacity: 0,
+              duration: 0.8,
+              ease: 'power3.inOut',
+              onComplete: () => {
+                if (loaderRef.current) loaderRef.current.style.display = 'none';
+                setReady(true);
+              }
+            });
+          });
+          return () => ctx.revert();
+        }, 400);
+      }
+    }, 50);
+
+    // Fallback: force hide after 6s max
+    const fallback = setTimeout(() => {
+      clearInterval(ticker);
+      if (loaderRef.current) {
+        gsap.to(loaderRef.current, {
+          opacity: 0, duration: 0.5,
+          onComplete: () => {
+            if (loaderRef.current) loaderRef.current.style.display = 'none';
+            setReady(true);
+          }
+        });
+      }
+    }, 6000);
+
+    return () => {
+      clearInterval(ticker);
+      clearTimeout(fallback);
+    };
   }, []);
 
   return (
@@ -53,13 +106,25 @@ function App() {
       </ErrorBoundary>
       
       <div className="bg-transparent min-h-screen text-theme-text1 overflow-x-hidden w-full relative pointer-events-none">
+        {/* ─── GLOBAL LOADING SCREEN ─── */}
         <div 
           ref={loaderRef} 
-          className="fixed inset-0 z-[99999] bg-theme-bg flex items-center justify-center pointer-events-none"
+          className="fixed inset-0 z-[99999] bg-[#030305] flex flex-col items-center justify-center pointer-events-all"
         >
-          <div className="font-display text-4xl font-bold tracking-widest flex items-center gap-2 text-theme-text1">
-            S<span className="w-2 h-2 rounded-full bg-theme-accent animate-pulse-glow"></span>M
+          <div className="font-display text-5xl font-bold tracking-widest flex items-center gap-2 text-white mb-8">
+            S<span className="w-3 h-3 rounded-full bg-[#00F5D4] animate-pulse"></span>M
           </div>
+          <div className="text-white/30 text-sm tracking-[0.3em] uppercase mb-6 font-display">
+            Loading Portfolio
+          </div>
+          <div className="w-64 h-[2px] bg-white/10 rounded-full overflow-hidden mb-3">
+            <div
+              ref={progressRef}
+              className="h-full bg-gradient-to-r from-[#00F5D4] to-[#BF5AF2] origin-left transition-transform duration-100"
+              style={{ transform: 'scaleX(0)' }}
+            />
+          </div>
+          <div ref={percentRef} className="text-white/40 text-xs font-mono tracking-widest">0%</div>
         </div>
         
         <Cursor />

@@ -72,14 +72,16 @@ const Experience = () => {
           trigger: card,
           start: "top 80%",
           onEnter: () => {
-            // Anime.js node scale and glow
-            animate(nodes[i], {
-              scale: [0, 1],
-              backgroundColor: ['#050508', '#00F5D4'],
-              boxShadow: ['0 0 0 rgba(0,245,212,0)', '0 0 20px rgba(0,245,212,0.6)'],
-              duration: 800,
-              ease: 'outElastic(1, .5)'
-            });
+            // Anime.js node scale and glow — guard against missing node
+            if (nodes[i]) {
+              animate(nodes[i], {
+                scale: [0, 1],
+                backgroundColor: ['#050508', '#00F5D4'],
+                boxShadow: ['0 0 0 rgba(0,245,212,0)', '0 0 20px rgba(0,245,212,0.6)'],
+                duration: 800,
+                ease: 'outElastic(1, .5)'
+              });
+            }
 
             // GSAP card slide in
             gsap.fromTo(card,

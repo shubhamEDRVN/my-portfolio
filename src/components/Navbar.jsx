@@ -17,22 +17,31 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 60);
-      
-      // Calculate active section based on scroll position
-      const sections = navLinks.map(link => document.querySelector(link.href));
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActive(navLinks[i].name);
-          break;
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // FIXED: Use IntersectionObserver for accurate active section detection
+    const observers = [];
+    navLinks.forEach((link) => {
+      const section = document.querySelector(link.href);
+      if (!section) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActive(link.name);
+          }
+        },
+        { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+      );
+      observer.observe(section);
+      observers.push(observer);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observers.forEach(obs => obs.disconnect());
+    };
   }, []);
 
   return (
