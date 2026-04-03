@@ -118,10 +118,10 @@ const Hero = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="max-w-[1600px] w-full px-6 md:px-12 flex items-center justify-between z-10 relative h-[100vh]">
+      <div className="max-w-[1600px] w-full px-6 md:px-12 flex flex-col lg:flex-row items-center justify-center lg:justify-between z-10 relative h-[100vh] pt-24 lg:pt-0 gap-6 lg:gap-0">
         
         {/* Left Text Block */}
-        <div ref={leftTextRef} className="flex flex-col items-start gap-4 z-20 w-[35%]">
+        <div ref={leftTextRef} className="flex flex-col items-center lg:items-start text-center lg:text-left gap-4 z-20 w-full lg:w-[35%]">
            <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter text-theme-text1 leading-tight">
              Welcome to<br/>Shubham<br/>Mehta's<br/>Portfolio
            </h1>
@@ -132,7 +132,7 @@ const Hero = () => {
         </div>
 
         {/* Center Canvas Element */}
-        <div className="flex-1 flex justify-center items-center z-10 relative pointer-events-none">
+        <div className="flex-1 flex justify-center items-center z-10 relative pointer-events-none w-full lg:w-auto my-4 lg:my-0">
            <canvas 
              ref={canvasRef} 
              className="rounded-full shadow-glow-cyan"
@@ -151,7 +151,7 @@ const Hero = () => {
         </div>
 
         {/* Right Text Block */}
-        <div ref={rightTextRef} className="flex flex-col items-end gap-3 z-20 w-[35%] text-right">
+        <div ref={rightTextRef} className="flex flex-col items-center lg:items-end text-center lg:text-right gap-3 z-20 w-full lg:w-[35%]">
            <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-theme-accent to-theme-accent2 leading-tight">
              Develop<br/>Design<br/>Create<br/>Analyze
            </h1>

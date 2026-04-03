@@ -404,7 +404,7 @@ const SolarSystemProjects = () => {
     const handleResize = () => {
       const w = window.innerWidth, h = window.innerHeight;
       isMobileRef.current = w <= 768;
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

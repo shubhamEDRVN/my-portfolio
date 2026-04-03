@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+  overscroll-behavior-y: none;
 }
 
 :root {

@@ -15,9 +15,10 @@ export function useLenis() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Snappy Expo easing
       direction: 'vertical',
       smooth: true,
-      smoothTouch: false,
+      smoothTouch: true,
+      syncTouch: true,
       wheelMultiplier: 1.5,
-      touchMultiplier: 2.0,
+      touchMultiplier: 1.5,
     });
 
     setLenis(lenisInstance);

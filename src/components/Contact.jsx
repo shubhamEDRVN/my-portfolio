@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { animate } from 'animejs';
 import { useMouseMagnetic } from '../hooks/useMouseMagnetic';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
@@ -39,7 +40,7 @@ const Contact = () => {
     const handleResize = () => {
       const rect = sectionRef.current?.getBoundingClientRect();
       if (!rect) return;
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       ctx.scale(dpr, dpr);
@@ -68,8 +69,9 @@ const Contact = () => {
         requestRef.current = requestAnimationFrame(anim);
         return; // Skip heavy canvas rendering
       }
-      const w = canvas.width / (window.devicePixelRatio || 1);
-      const h = canvas.height / (window.devicePixelRatio || 1);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const w = canvas.width / dpr;
+      const h = canvas.height / dpr;
       const mouse = mouseRef.current;
       ctx.clearRect(0, 0, w, h);
 
@@ -126,12 +128,30 @@ const Contact = () => {
       return;
     }
     setStatus('sending');
-    setTimeout(() => {
+
+    // EmailJS sending configuration
+    emailjs.send(
+      'service_y5bvlve',
+      'YOUR_TEMPLATE_ID', // Provide your template ID here
+      {
+        from_name: formState.name,
+        to_name: 'Shubham', // Provide your name or site name
+        from_email: formState.email,
+        message: formState.message,
+      },
+      'yvr3gHItqyJIu9GC1'
+    )
+    .then(() => {
       setStatus('success');
       animate(btnRef.current, { scale: [1, 1.05, 1], duration: 800, ease: 'outElastic(1, .5)' });
       setFormState({ name: '', email: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
-    }, 1500);
+    })
+    .catch((error) => {
+      console.error('EmailJS Error:', error);
+      setStatus('idle');
+      alert('Failed to send message please check console or try again.');
+    });
   };
 
   const handleChange = (e) => {
@@ -179,7 +199,7 @@ const Contact = () => {
               <div className="space-y-4">
                 {[
                   { icon: 'MAIL', label: 'Email', value: 'mehtashubham0070@gmail.com', href: 'mailto:mehtashubham0070@gmail.com' },
-                  { icon: 'LINK', label: 'LinkedIn', value: 'linkedin.com/in/shubhammehta', href: 'https://linkedin.com/in/shubhammehta' },
+                  { icon: 'LINK', label: 'LinkedIn', value: 'linkedin.com/in/shubham-mehta-3a09a52a1', href: 'https://www.linkedin.com/in/shubham-mehta-3a09a52a1/' },
                   { icon: 'GIT', label: 'GitHub', value: 'github.com/shubhamEDRVN', href: 'https://github.com/shubhamEDRVN' }
                 ].map((item, idx) => (
                   <a

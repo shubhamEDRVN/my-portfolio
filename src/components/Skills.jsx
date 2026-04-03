@@ -41,7 +41,7 @@ const Skills = () => {
     const handleResize = () => {
       const rect = sectionRef.current?.getBoundingClientRect();
       if (!rect) return;
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       ctx.scale(dpr, dpr);
@@ -71,8 +71,9 @@ const Skills = () => {
         requestRef.current = requestAnimationFrame(animate);
         return; // Skip heavy canvas rendering
       }
-      const w = canvas.width / (window.devicePixelRatio || 1);
-      const h = canvas.height / (window.devicePixelRatio || 1);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const w = canvas.width / dpr;
+      const h = canvas.height / dpr;
       const mouse = mouseRef.current;
       
       const rect = canvas.getBoundingClientRect();
