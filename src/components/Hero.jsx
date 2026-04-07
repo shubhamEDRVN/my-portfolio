@@ -29,7 +29,7 @@ const Hero = () => {
   useEffect(() => {
     let loadedCount = 0;
     const urls = new Array(TOTAL_FRAMES).fill(0).map((_, i) => 
-      `/assets/ezgif-frame-${String(i + 1).padStart(3, '0')}.jpg`
+      `/assets/ezgif-frame-${String(i + 1).padStart(3, '0')}.webp`
     );
     
     urls.forEach((url, idx) => {
